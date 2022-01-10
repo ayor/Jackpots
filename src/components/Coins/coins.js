@@ -22,7 +22,7 @@ export default function Coins({ screenWidth, screenHeight, jackpotSize }) {
         ease: 'bounce',
       }
     );
-  }, []);
+  }, [jackpotSize.height, jackpotSize.width, screenHeight, screenWidth]);
   return (
     <Sprite
       anchor={centerPoint}

@@ -12,7 +12,7 @@ import RotatingWheel from '../components/Wheel/RotatingWheel';
 import { getPosition } from '../getData';
 import HeaderText from '../components/HeaderText/HeaderText';
 import Sound from 'react-sound';
-import ElectricWave from '../assets/blast.mp3';
+// import ElectricWave from '../assets/blast.mp3';
 import WheelSpin from '../assets/wheel-spin.wav';
 import Spin from '../assets/new-spin.wav';
 import Marker from '../components/Marker/Marker';
@@ -38,7 +38,7 @@ const Layout = () => {
   const [isSpinning, setSpinning] = useState(false);
   const [speed, setSpeed] = useState(0.002);
   const [isPlaying, setPlaying] = useState(false);
-  const [playLoadSound, setPlayingLoadSound] = useState(false);
+  const [playLoadSound] = useState(false);
   const [showMarker, setShowMarker] = useState(false);
   const [tl] = useState(gsap.timeline({ delay: 0.8 }));
   const [options, setOptions] = useState({

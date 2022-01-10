@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import React, { useRef, useState } from 'react';
 import { Sprite } from 'react-pixi-fiber';
 import * as PIXI from 'pixi.js';
 import wheel from '../../assets/images/wheel.png';
