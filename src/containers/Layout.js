@@ -13,8 +13,8 @@ import { getPosition } from '../getData';
 import HeaderText from '../components/HeaderText/HeaderText';
 import Sound from 'react-sound';
 // import ElectricWave from '../assets/blast.mp3';
-import WheelSpin from '../assets/wheel-spin.wav';
-import Spin from '../assets/new-spin.wav';
+// import WheelSpin from '../assets/wheel-spin.wav';
+import Spin from '../assets/spin.wav';
 import Marker from '../components/Marker/Marker';
 import Jackpot from '../components/Coins/coins';
 const initialHeight = window.innerHeight;
@@ -38,7 +38,6 @@ const Layout = () => {
   const [isSpinning, setSpinning] = useState(false);
   const [speed, setSpeed] = useState(0.002);
   const [isPlaying, setPlaying] = useState(false);
-  const [playLoadSound] = useState(false);
   const [showMarker, setShowMarker] = useState(false);
   const [tl] = useState(gsap.timeline({ delay: 0.8 }));
   const [options, setOptions] = useState({
@@ -51,7 +50,6 @@ const Layout = () => {
     // btnRef.current.click();
 
     const handleResize = () => {
-      debugger;
       let newHeight = window.innerHeight;
       let newWidth = window.innerWidth;
 
@@ -113,10 +111,10 @@ const Layout = () => {
         onLoad={handleSoundLoad}
         playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
       />
-      <Sound
-        url={WheelSpin}
+      {/* <Sound
+        url={Spin}
         playStatus={playLoadSound ? Sound.status.PLAYING : Sound.status.STOPPED}
-      />
+      /> */}
       {/* <button ref={btnRef} onClick={() => setPlayingLoadSound(() => true)}>
         play
       </button> */}

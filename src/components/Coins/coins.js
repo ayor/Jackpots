@@ -5,7 +5,8 @@ import { gsap } from 'gsap';
 import coins from '../../assets/images/coins.png';
 const centerPoint = new PIXI.Point(0.5, 0.5);
 export default function Coins({ screenWidth, screenHeight, jackpotSize }) {
-  const coinRef = useRef();
+  let coinRef = useRef();
+
   useEffect(() => {
     gsap.fromTo(
       coinRef.current,
@@ -18,11 +19,11 @@ export default function Coins({ screenWidth, screenHeight, jackpotSize }) {
         width: 300 * jackpotSize.width,
 
         height: 300 * jackpotSize.height,
-        duration: 1.2,
+        duration: 1.1,
         ease: 'bounce',
       }
     );
-  }, [jackpotSize.height, jackpotSize.width, screenHeight, screenWidth]);
+  }, []);
   return (
     <Sprite
       anchor={centerPoint}
@@ -30,7 +31,7 @@ export default function Coins({ screenWidth, screenHeight, jackpotSize }) {
       ref={coinRef}
       y={screenHeight / 2}
       width={50}
-      height={50}
+      height={40}
       texture={PIXI.Texture.from(coins)}
     />
   );

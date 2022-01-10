@@ -19,7 +19,7 @@ const ShowdownText = ({ screenWidth, screenHeight, tl }) => {
     tl.fromTo(o2Ref.current, { alpha: 0 }, { alpha: 1, duration: 0.2 }, '>');
     tl.fromTo(w2Ref.current, { alpha: 0 }, { alpha: 1, duration: 0.2 }, '>');
     tl.fromTo(nRef.current, { alpha: 0 }, { alpha: 1, duration: 0.2 }, '>');
-  }, [tl]);
+  }, []);
 
   const showdownArray = [
     {
