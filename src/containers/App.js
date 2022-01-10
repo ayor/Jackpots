@@ -1,7 +1,13 @@
-import React from 'react';
-import Layout from './Layout';
+import React, { Suspense } from 'react';
+import Spinner from '../components/Spinner/Spinner';
+const Layout = React.lazy(() => import('./Layout')); // Lazy-loaded
+
 function App() {
-  return <Layout />;
+  return (
+    <Suspense fallback={<Spinner />}>
+      <Layout />
+    </Suspense>
+  );
 }
 
 export default App;
