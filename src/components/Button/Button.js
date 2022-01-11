@@ -29,7 +29,7 @@ const ButtonSpin = ({
       pointerdown={handleButtonClick}
       // pointerover={() => setScale(0.8)}
       // pointerout={() => setScale(0.6)}
-      height={60}
+      height={45}
       texture={PIXI.Texture.from(buttonSpin)}
     />
   );

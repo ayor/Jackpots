@@ -33,7 +33,7 @@ const Layout = () => {
   const [rotation, setRotation] = useState(0);
   const [wheelSpin, setWheelSpin] = useState(0);
 
-  const [jackpotSize, setJackpotSize] = useState({ width: 1, height: 1 });
+  const [message, setMessage] = useState();
   const [showJackpot, setShowJackpot] = useState(false);
   const [isSpinning, setSpinning] = useState(false);
   const [speed, setSpeed] = useState(0.002);
@@ -67,10 +67,7 @@ const Layout = () => {
 
   const handleButtonClick = async () => {
     setRotation(0);
-    setJackpotSize({
-      width: 1,
-      height: 1,
-    });
+
     setShowJackpot(false);
     if (isSpinning) return;
     setShowMarker(false);
@@ -82,17 +79,20 @@ const Layout = () => {
     const data = await getPosition();
 
     if (data) {
+      const jackpotScore = Math.random() * 10;
+
       setPlaying(false);
       setSpeed(0);
       setRotation(data['Position']);
       setSpinning(false);
       setShowMarker(true);
+      if (jackpotScore > 8) {
+        setMessage('Jackpot!!');
+      } else {
+        setMessage('Try Again!!');
+      }
+
       setTimeout(() => {
-        const axis = Math.random();
-        setJackpotSize({
-          width: axis,
-          height: axis,
-        });
         setShowJackpot(true);
       }, 1000);
     }
@@ -111,13 +111,6 @@ const Layout = () => {
         onLoad={handleSoundLoad}
         playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
       />
-      {/* <Sound
-        url={Spin}
-        playStatus={playLoadSound ? Sound.status.PLAYING : Sound.status.STOPPED}
-      /> */}
-      {/* <button ref={btnRef} onClick={() => setPlayingLoadSound(() => true)}>
-        play
-      </button> */}
 
       <Stage options={options}>
         <Background screenHeight={height} screenWidth={width} />
@@ -145,7 +138,7 @@ const Layout = () => {
         />
         {showJackpot && (
           <Jackpot
-            jackpotSize={jackpotSize}
+            message={message}
             screenHeight={height}
             screenWidth={width}
           />
